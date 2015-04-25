@@ -1,4 +1,4 @@
-name := "play-mongo"
+name := "beackn-rest-api"
 
 version := "1.0-SNAPSHOT"
 
