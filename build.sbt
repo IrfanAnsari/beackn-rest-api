@@ -1,4 +1,4 @@
-name := "beackn-rest-api"
+name := "beacon-rest-api"
 
 version := "1.0-SNAPSHOT"
 
