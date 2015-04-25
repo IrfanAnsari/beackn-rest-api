@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET           /                    com.transform.beacon.sticker.controllers.Application.index
+POST          /stickers            @com.transform.beacon.sticker.controllers.StickerController.create
+GET           /stickers            @com.transform.beacon.sticker.controllers.StickerController.listAll()
+GET           /stickers/:id        @com.transform.beacon.sticker.controllers.StickerController.get(id: String)
+PUT           /stickers/:id        @com.transform.beacon.sticker.controllers.StickerController.update(id: String)
+DELETE        /stickers/:id        @com.transform.beacon.sticker.controllers.StickerController.delete(id: String)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file        controllers.Assets.at(path="/public", file)
