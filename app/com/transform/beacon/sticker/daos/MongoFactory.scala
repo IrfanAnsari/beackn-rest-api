@@ -2,8 +2,8 @@ package com.transform.beacon.sticker.daos
 
 import reactivemongo.api.{MongoDriver, DefaultDB}
 import play.modules.reactivemongo.json.collection.JSONCollection
-import scala.concurrent.ExecutionContext
-import ExecutionContext.Implicits.global
+import reactivemongo.core.nodeset.Authenticate
+import scala.concurrent.ExecutionContext.Implicits.global
 
 
 trait MongoConnector {
@@ -24,12 +24,19 @@ object MongoFactory{
 
  // mongodb://heroku_app36253053:o8ca91jonr7e6hcgc5ih22efeo@ds061238.mongolab.com:61238/heroku_app36253053
 
-  def getDb(connection: MongoConnection): DefaultDB = {
-    driver.connection(List(s"${connection.user}:${connection.password}@${connection.host}:${connection.port}"))(connection.dbName)
+  def getDb(connectionConfig: MongoConnection): DefaultDB = {
+    val servers = List(s"${connectionConfig.host}:${connectionConfig.port}")
+
+    val credentials = Seq(Authenticate(connectionConfig.dbName, connectionConfig.user, connectionConfig.password))
+    val connection = driver.connection(servers, nbChannelsPerNode = 5, authentications = credentials)
+
+    connection(connectionConfig.dbName)
+
   }
 
   def getCollection(connection: MongoConnection, collectionName: String): JSONCollection = {
     getDb(connection).collection[JSONCollection](collectionName)
   }
+
 
 }
