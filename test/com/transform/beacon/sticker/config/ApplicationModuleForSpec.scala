@@ -7,7 +7,7 @@ import com.transform.beacon.sticker.services.StickerService
 
 
 trait ApplicationModuleForSpec extends Macwire {
-  lazy val mongoConnection = new MongoConnection("localhost", 12345, "example_test")
+  lazy val mongoConnection = new MongoConnection("user","password", "localhost", 12345, "example_test")
   lazy val connector = wire[SingleMongoConnector]
   lazy val productDao = wire[StickerDao]
   lazy val productService= wire[StickerService]

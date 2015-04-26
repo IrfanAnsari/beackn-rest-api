@@ -11,7 +11,7 @@ class MongoDaoSpec extends EmbeddedMongoSpec with AwaitHelper {
 
   val mongoDao = new MongoDao[FakeDocument] {
     override val connector: MongoConnector = new SingleMongoConnector
-    override val connection: MongoConnection = MongoConnection("localhost", port, "test")
+    override val connection: MongoConnection = MongoConnection("user", "password", "localhost", port, "testdb")
     override val collectionName: String = "test"
     override implicit val formatter: Format[FakeDocument] = Json.format[FakeDocument]
   }
