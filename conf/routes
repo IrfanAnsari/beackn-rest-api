@@ -11,5 +11,11 @@ PUT           /stickers/:id        @com.transform.beacon.sticker.controllers.Sti
 DELETE        /stickers/:id        @com.transform.beacon.sticker.controllers.StickerController.delete(id: String)
 
 
+
+POST          /npsevents            @com.transform.beacon.sticker.controllers.NPSEventController.create
+GET           /npsevents            @com.transform.beacon.sticker.controllers.NPSEventController.listAll()
+GET           /npsevents/:id        @com.transform.beacon.sticker.controllers.NPSEventController.get(id: String)
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET           /assets/*file        controllers.Assets.at(path="/public", file)

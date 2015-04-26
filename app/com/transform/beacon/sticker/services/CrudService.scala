@@ -1,6 +1,6 @@
 package com.transform.beacon.sticker.services
 
-import com.transform.beacon.sticker.daos.{StickerDao, CrudDao}
+import com.transform.beacon.sticker.daos.{NPSEventDao, StickerDao, CrudDao}
 import com.transform.beacon.sticker.models.Model
 
 import scala.concurrent.Future
@@ -31,3 +31,7 @@ abstract class CrudService[M <: Model](val crudDao: CrudDao[M]) {
 
 
 class StickerService(override val crudDao: StickerDao) extends CrudService(crudDao)
+
+
+class NPSEventService(override val crudDao: NPSEventDao) extends CrudService(crudDao)
+

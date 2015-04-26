@@ -13,3 +13,14 @@ case class Sticker(_id: Option[String], _type: String, rssi: String ) extends Mo
 object Sticker {
   implicit val stickerFormat = Json.format[Sticker]
 }
+
+
+case class NPSEvent(_id: Option[String], identifier: String, npsLocatables: List[NPSLocatable]) extends Model
+
+object NPSEvent {
+  implicit val npsLocatableFormat = Json.format[NPSLocatable]
+  implicit val npsEventFormat = Json.format[NPSEvent]
+}
+
+
+case class NPSLocatable(_id: Option[String], identifier: String, rssi: Int, _type: String) extends Model

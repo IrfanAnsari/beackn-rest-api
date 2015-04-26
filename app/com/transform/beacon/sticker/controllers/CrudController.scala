@@ -1,7 +1,7 @@
 package com.transform.beacon.sticker.controllers
 
 import com.transform.beacon.sticker.models.Model
-import com.transform.beacon.sticker.services.{StickerService, CrudService}
+import com.transform.beacon.sticker.services.{NPSEventService, StickerService, CrudService}
 import play.api.libs.json.{Format, Json}
 import play.api.mvc._
 
@@ -15,7 +15,7 @@ abstract class CrudController[M <: Model : Format](val crudService: CrudService[
     request =>
       withDocument(request) {
         document => crudService.create(document).map {
-          doc => Created.withHeaders("Location" -> com.transform.beacon.sticker.controllers.routes.StickerController.get(doc).url) // Look how we can add the relative path to resource
+          doc => Created.withHeaders("Location" -> com.transform.beacon.sticker.controllers.routes.NPSEventController.get(doc).url) // Look how we can add the relative path to resource
         }
       }
   }
@@ -65,3 +65,6 @@ abstract class CrudController[M <: Model : Format](val crudService: CrudService[
 }
 
 class StickerController(override val crudService: StickerService) extends CrudController(crudService)
+
+
+class NPSEventController(override val crudService: NPSEventService) extends CrudController(crudService)

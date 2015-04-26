@@ -1,9 +1,9 @@
 package com.transform.beacon.sticker.config
 
 import com.softwaremill.macwire.Macwire
-import com.transform.beacon.sticker.controllers.StickerController
-import com.transform.beacon.sticker.daos.{MongoConnection, SingleMongoConnector, StickerDao}
-import com.transform.beacon.sticker.services.StickerService
+import com.transform.beacon.sticker.controllers.{NPSEventController, StickerController}
+import com.transform.beacon.sticker.daos.{NPSEventDao, MongoConnection, SingleMongoConnector, StickerDao}
+import com.transform.beacon.sticker.services.{NPSEventService, StickerService}
 
 
 trait ApplicationModule extends Macwire{
@@ -12,5 +12,8 @@ trait ApplicationModule extends Macwire{
   lazy val productDao = wire[StickerDao]
   lazy val productService= wire[StickerService]
   lazy val productController = wire[StickerController]
+  lazy val nPSEventController = wire[NPSEventController]
+  lazy val nPSEventService = wire[NPSEventService]
+  lazy val nPSEventDao = wire[NPSEventDao]
 
 }

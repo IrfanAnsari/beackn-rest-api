@@ -22,8 +22,6 @@ object MongoFactory{
 
   private lazy val driver = new MongoDriver()
 
- // mongodb://heroku_app36253053:o8ca91jonr7e6hcgc5ih22efeo@ds061238.mongolab.com:61238/heroku_app36253053
-
   def getDb(connectionConfig: MongoConnection): DefaultDB = {
     val servers = List(s"${connectionConfig.host}:${connectionConfig.port}")
 
