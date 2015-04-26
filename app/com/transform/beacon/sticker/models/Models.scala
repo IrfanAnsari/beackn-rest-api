@@ -28,6 +28,9 @@ object NPSEvent {
   implicit val npsEventWriter = Json.writes[NPSEvent]
   implicit val npsEventReader = Json.reads[NPSEvent]
 
+  implicit val npsLocatableWriter = Json.writes[NPSLocatable]
+  implicit val npsLocatableReader = Json.reads[NPSLocatable]
+
 //
 //
 //  implicit val npsLocatableFormat = Json.format[NPSLocatable]

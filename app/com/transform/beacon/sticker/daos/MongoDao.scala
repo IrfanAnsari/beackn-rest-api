@@ -10,6 +10,7 @@ import play.modules.reactivemongo.json.BSONFormats._
 
 
 trait MongoDao[M <: Model] extends CrudDao[M] {
+
   implicit val formatter: Format[M]
 
   val collectionName: String
