@@ -15,7 +15,7 @@ abstract class CrudController[M <: Model : Format](val crudService: CrudService[
     request =>
       withDocument(request) {
         document => crudService.create(document).map {
-          doc => Created.withHeaders("Location" -> com.transform.beacon.sticker.controllers.routes.NPSEventController.get(doc).url) // Look how we can add the relative path to resource
+          doc => Created.withHeaders("Location" -> com.transform.beacon.sticker.controllers.routes.StickerController.get(doc).url) // Look how we can add the relative path to resource
         }
       }
   }
